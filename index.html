@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <section id="start" class="start">
+                    <a>Start Game</a>
+                 <img class="start-image" src="assets/images/adriel.jpeg" alt="Ganador">
+
+                </section>
+                <section class="game">
+                    <div id="score" class="score">
+                        <div class="score__title">Score</div>
+                        <div id="points" class="score__value">0</div>
+                    </div>
+                  <canvas id="myCanvas" width="300" height="600" display="block">
+                  </canvas>
+
+                </section>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="gameResultModal" class="modal">
+            <div class="modal-content">
+                <h2>Finalización del Juego</h2>
+                <p id="resume_score">¡Hiciste:</p>
+                <img class="winner-image" src="assets/images/leinier.jpeg" alt="Ganador">
+                <button class="close-button" onclick="closeModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <Audio id="audio" src="./assets/sounds/song-main.mp3" autoplay loop></Audio>
+ <script src="MOVEMENT_ENUM.js"></script>
+<script src="./tetris_game.js"></script>
+</body>
+</html>

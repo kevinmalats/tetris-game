@@ -1,0 +1,78 @@
+canvas {
+    border: 2px solid #00FFFF;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 30px;
+}
+.score{
+    color: #00FFFF;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    display: none;
+}
+
+body{
+    background-color: black;
+}
+
+.start{
+    display: flex;
+    color: aqua;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Contenido del modal */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Estilo para la imagen del ganador */
+.winner-image {
+    max-width: 10%;
+    display: block;
+    margin: auto;
+    height: auto;
+}
+
+/* Estilo para el botón de cierre del modal */
+.close-button {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.start-image{
+    max-width: 20%;
+    display: block;
+    margin: auto;
+    height: auto;
+}

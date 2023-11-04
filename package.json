@@ -1,0 +1,11 @@
+{
+  "name": "tetris_game",
+  "version": "1.0.0",
+  "description": "Is a game for hobby",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Malats",
+  "license": "ISC"
+}
