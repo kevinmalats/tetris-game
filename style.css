@@ -13,6 +13,15 @@ canvas {
     display: none;
 }
 
+#name{
+    color: black;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 body{
     background-color: black;
 }
@@ -25,6 +34,10 @@ body{
     flex-direction: column;
     font-size: 30px;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.start a {
+    cursor: pointer;
 }
 
 /* Estilos para el modal */
@@ -60,8 +73,7 @@ body{
 }
 
 /* Estilo para el botón de cierre del modal */
-.close-button {
-    background-color: #f44336;
+.modal-button {
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -69,10 +81,28 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
+.close-button{
+    background-color: #f44336;
+    position: absolute;
+    right: 0;
+    margin-right: 23px;
+}
+.open-button {
+    background-color: #1a66d6;
+}
 
 .start-image{
     max-width: 20%;
     display: block;
     margin: auto;
     height: auto;
+}
+
+#historyScoreModal > div{
+    width: 50%;
+    height: 50%;
+}
+table{
+    width: 100%;
+    text-align: center;
 }

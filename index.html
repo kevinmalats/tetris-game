@@ -11,32 +11,84 @@
             <div class="col-12">
                 <section id="start" class="start">
                     <a>Start Game</a>
-                 <img class="start-image" src="assets/images/adriel.jpeg" alt="Ganador">
+                    <input type="text" id="name" placeholder="Escribe tu nombre para comenzar">
+                    <img class="start-image" src="assets/images/adriel.jpeg" alt="Ganador">
 
                 </section>
+
                 <section class="game">
                     <div id="score" class="score">
                         <div class="score__title">Score</div>
                         <div id="points" class="score__value">0</div>
                     </div>
-                  <canvas id="myCanvas" width="300" height="600" display="block">
+
+                  <canvas id="myCanvas" width="300" height="600">
                   </canvas>
 
                 </section>
             </div>
         </div>
-        <!-- Modal -->
+        <!-- Modal Resultado -->
         <div id="gameResultModal" class="modal">
             <div class="modal-content">
+                <button class="modal-button close-button" onclick="closeModal()">X</button>
                 <h2>Finalización del Juego</h2>
                 <p id="resume_score">¡Hiciste:</p>
                 <img class="winner-image" src="assets/images/leinier.jpeg" alt="Ganador">
-                <button class="close-button" onclick="closeModal()">Cerrar</button>
+                <button class="open-button modal-button" onclick="openModalScore()">Ver Puntajes Historicos</button>
+            </div>
+        </div>
+
+        <!-- Modal Historico -->
+        <div id="historyScoreModal" class="modal">
+            <div class="modal-content">
+                <button class="close-button modal-button" onclick="closeModalResumeScores()">X</button>
+                <h2>Historico de Puntajes</h2>
+                <table id="tableHistoryScore">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Puntaje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyHistoryScore">
+                    </tbody>
+                </table>
+                <div class="" id="contentHistoryScore">
+                </div>
+
             </div>
         </div>
     </div>
+
     <Audio id="audio" src="./assets/sounds/song-main.mp3" autoplay loop></Audio>
- <script src="MOVEMENT_ENUM.js"></script>
+
+
+    <script src="MOVEMENT_ENUM.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore-compat.js"></script>
+    <script>
+        // Import the functions you need from the SDKs you need
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+         const firebaseConfig = {
+            apiKey: "AIzaSyCTUgSAhYMLlb_Z1W1YvYpk8E0BXZphvzE",
+            authDomain: "bootcamp-f023a.firebaseapp.com",
+            projectId: "bootcamp-f023a",
+            storageBucket: "bootcamp-f023a.appspot.com",
+            messagingSenderId: "813458147013",
+            appId: "1:813458147013:web:6292bf1c9d3b44f1f752ac",
+            measurementId: "G-4RXZEW67YJ"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script  src="./database.js"></script>
+    <script src="./scoreHistory.js"></script>
 <script src="./tetris_game.js"></script>
 </body>
 </html>

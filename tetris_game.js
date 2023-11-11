@@ -34,7 +34,8 @@ let lastTime = 0;
 let interval = 1000;
 let countGame = 0;
 let sumPoint = 10;
-let globalId = 0;
+let globalId;
+const namePlayer = document.getElementById("name");
 const score = document.getElementById("score");
 
 
@@ -217,9 +218,8 @@ document.addEventListener(LISTENER_ENUM.KEYDOWN, function(event) {
 });
 
 // Start the game loop
-main();
-
-
+//main();
+openModal();
 function update(){
     context.clearRect(0, 0, canvas.width, canvas.height);
     if (collidesWithBoard()) {
@@ -233,7 +233,6 @@ function update(){
         clearPieces();
         if (collidesWithBoard()) {
             // Game over
-           //alert("Game Over!");
            gameOver();
         }
     }
@@ -241,14 +240,18 @@ function update(){
     drawBoard();
 }
 function gameOver() {
+    const scoreHistory = new ScoreHistory(parseInt(points.innerHTML), namePlayer.value);
+    scoreHistory.saveScore();
     audio.pause();
     cancelAnimationFrame(globalId);
     score.style.display = "none";
-    openModal();
     canvas.style.display = "none";
     const resume_score = document.getElementById("resume_score");
     resume_score.innerHTML ="Hiciste: "+ points.innerHTML + " puntos";
+    sumPoint = 0;
+    points.innerHTML = parseInt(points.innerHTML) + sumPoint;
     board.forEach(row => row.fill(0));
+    openModal();
 }
 
 // Función para abrir el modal
@@ -257,6 +260,11 @@ function openModal() {
 }
 
 // Función para cerrar el modal
+function closeModalResumeScores() {
+    document.getElementById("historyScoreModal").style.display = "none";
+    document.getElementById("tableBodyHistoryScore").innerHTML = "";
+}
+
 function closeModal() {
     document.getElementById("gameResultModal").style.display = "none";
     start.style.display = "flex";
@@ -264,11 +272,33 @@ function closeModal() {
 
 function main() {
        start.addEventListener("click", function() {
+        if(namePlayer.value == ""){
+            alert("Debe ingresar un nombre para continuar con el juego");
+            return;
+        }
        audio.play();
        audio.loop = true;
        start.style.display = "none";
        canvas.style.display = "flex";
        score.style.display = "block";
-       gameLoop();
+       globalId = requestAnimationFrame(gameLoop);
    });
+}
+
+ async function  openModalScore() {
+    document.getElementById("historyScoreModal").style.display = "block";
+    const scoreHistory = new ScoreHistory();
+    const scores = await scoreHistory.getScore();
+    console.log(scores);
+    const scoreList = document.getElementById("tableBodyHistoryScore");
+    scores.forEach((score) => {
+        const row = document.createElement("tr");
+        const nameUser = document.createElement("td");
+        nameUser.innerHTML = score.nameUser;
+        const scoreUser = document.createElement("td");
+        scoreUser.innerHTML = score.score;
+        row.appendChild(nameUser);
+        row.appendChild(scoreUser);
+        scoreList.appendChild(row);
+    });
 }
